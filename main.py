@@ -134,12 +134,9 @@ class LeetCodePlugin:
 
     def send_leetcode_everyday(self, ame: AstrMessageEvent):
         while True:
-            t = time.localtime()
-            if t.tm_hour == 13:
-                if t.tm_min == 30:
-                    msg = self.get_leetcode_question_everyday()
-                    for channel in self.subs:
-                        ame.global_obj.qq_sdk_platform.push_message(channel, [Plain(msg)])
-                    time.sleep(600)
+            msg = self.get_leetcode_question_everyday()
+            for channel in self.subs:
+                ame.global_obj.qq_sdk_platform.push_message(channel, [Plain(msg)])
+            time.sleep(60*60*24)
 
 
