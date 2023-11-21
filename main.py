@@ -136,7 +136,7 @@ class LeetCodePlugin:
         while True:
             msg = self.get_leetcode_question_everyday()
             for channel in self.subs:
-                ame.global_obj.qq_sdk_platform.push_message(channel, [Plain(msg)])
+                ame.global_obj.qq_sdk_platform.client.api.post_message(channel_id=str(channel), content=msg)
             time.sleep(60*60*24)
 
 
